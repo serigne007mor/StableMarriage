@@ -13,11 +13,13 @@ public class StableMarriage {
 
     static boolean wPrefersM1OverM(int preference[][], int currentWomen, int currentMen, int currentAssignment) {
         for (int i = 0; i < preference[0].length; i++) {
-            if (preference[currentWomen][i] == currentAssignment)
+            if (preference[currentWomen][i] == currentAssignment){
                 return true;
+            }
 
-            if (preference[currentWomen][i] == currentMen)
+            if (preference[currentWomen][i] == currentMen){
                 return false;
+            }
 
         }
         return false;
@@ -35,8 +37,9 @@ public class StableMarriage {
 
             int currentMen;
             for (currentMen = 0; currentMen < preference[0].length; currentMen++)
-                if (freeMen[currentMen] == false)
+                if (freeMen[currentMen] == false){
                     break;
+                }
 
             for (int i = 0; i < preference[0].length && freeMen[currentMen] == false; i++) {
                 int w = preference[currentMen][i];
