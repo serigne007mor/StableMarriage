@@ -4,8 +4,6 @@ import java.util.Arrays;
 
 public class StableMarriage {
 
-    // static final int maxMarriage = 4;
-
     public static void main(String[] args) throws Exception {
         System.out.println("Hello Java");
         int prefer[][] = new int[][] { { 7, 5, 6, 4 }, { 5, 4, 6, 7 }, { 4, 5, 6, 7 }, { 4, 5, 6, 7 }, { 0, 1, 2, 3 },
