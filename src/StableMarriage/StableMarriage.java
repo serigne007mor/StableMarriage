@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class StableMarriage {
 
-    static final int maxMarriage = 4;
+    // static final int maxMarriage = 4;
 
     public static void main(String[] args) throws Exception {
         System.out.println("Hello Java");
@@ -14,7 +14,7 @@ public class StableMarriage {
     }
 
     static boolean wPrefersM1OverM(int preference[][], int currentWomen, int currentMen, int currentAssignment) {
-        for (int i = 0; i < maxMarriage; i++) {
+        for (int i = 0; i < preference[0].length; i++) {
             if (preference[currentWomen][i] == currentAssignment)
                 return true;
 
@@ -26,30 +26,30 @@ public class StableMarriage {
     }
 
     static void stableMarriage(int preference[][]) {
-        int currentWomenProposal[] = new int[maxMarriage];
+        int currentWomenProposal[] = new int[preference[0].length];
 
-        boolean freeMen[] = new boolean[maxMarriage];
+        boolean freeMen[] = new boolean[preference[0].length];
 
         Arrays.fill(currentWomenProposal, -1);
-        int freeCount = maxMarriage;
+        int freeCount = preference[0].length;
 
         while (freeCount > 0) {
 
             int currentMen;
-            for (currentMen = 0; currentMen < maxMarriage; currentMen++)
+            for (currentMen = 0; currentMen < preference[0].length; currentMen++)
                 if (freeMen[currentMen] == false)
                     break;
 
-            for (int i = 0; i < maxMarriage && freeMen[currentMen] == false; i++) {
+            for (int i = 0; i < preference[0].length && freeMen[currentMen] == false; i++) {
                 int w = preference[currentMen][i];
-                if (currentWomenProposal[w - maxMarriage] == -1) {
-                    currentWomenProposal[w - maxMarriage] = currentMen;
+                if (currentWomenProposal[w - preference[0].length] == -1) {
+                    currentWomenProposal[w - preference[0].length] = currentMen;
                     freeMen[currentMen] = true;
                     freeCount--;
                 } else {
-                    int m1 = currentWomenProposal[w - maxMarriage];
+                    int m1 = currentWomenProposal[w - preference[0].length];
                     if (wPrefersM1OverM(preference, w, currentMen, m1) == false) {
-                        currentWomenProposal[w - maxMarriage] = currentMen;
+                        currentWomenProposal[w - preference[0].length] = currentMen;
                         freeMen[currentMen] = true;
                         freeMen[m1] = false;
                     }
@@ -57,10 +57,10 @@ public class StableMarriage {
             }
         }
 
-        System.out.println("Woman Man");
-        for (int i = 0; i < maxMarriage; i++) {
+        System.out.println("Woman   Man");
+        for (int i = 0; i < preference[0].length; i++) {
             System.out.print(" ");
-            System.out.println(i + maxMarriage + "	 " + currentWomenProposal[i]);
+            System.out.println(i + preference[0].length + "	 " + currentWomenProposal[i]);
         }
     }
 
