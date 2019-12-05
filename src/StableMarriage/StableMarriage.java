@@ -6,8 +6,7 @@ public class StableMarriage {
 
     public static void main(String[] args) throws Exception {
         System.out.println("Hello Java");
-        int preferenceList[][] = new int[][] { { 7, 5, 6, 4 }, { 5, 4, 6, 7 }, { 4, 5, 6, 7 }, { 4, 5, 6, 7 }, { 0, 1, 2, 3 },
-                { 0, 1, 2, 3 }, { 0, 1, 2, 3 }, { 0, 1, 2, 3 } };
+        int preferenceList[][] = new int[][] { {4,3,5}, {5,4,3}, {3,5,4}, {1,0,2},{2,1,0},{0,2,1}};
         stableMarriage(preferenceList);
     }
 
@@ -26,11 +25,11 @@ public class StableMarriage {
     }
 
     static void stableMarriage(int preferenceList[][]) {
-        int currentWomenProposal[] = new int[preferenceList[0].length];
+        int proposerArray[] = new int[preferenceList[0].length];
 
         boolean freeMen[] = new boolean[preferenceList[0].length];
 
-        Arrays.fill(currentWomenProposal, -1);
+        Arrays.fill(proposerArray, -1);
         int freeCount = preferenceList[0].length;
 
         while (freeCount > 0) {
@@ -43,25 +42,25 @@ public class StableMarriage {
 
             for (int i = 0; i < preferenceList[0].length && freeMen[currentMen] == false; i++) {
                 int w = preferenceList[currentMen][i];
-                if (currentWomenProposal[w - preferenceList[0].length] == -1) {
-                    currentWomenProposal[w - preferenceList[0].length] = currentMen;
+                if (proposerArray[w - preferenceList[0].length] == -1) {
+                    proposerArray[w - preferenceList[0].length] = currentMen;
                     freeMen[currentMen] = true;
                     freeCount--;
                 } else {
-                    int m1 = currentWomenProposal[w - preferenceList[0].length];
-                    if (wPrefersM1OverM(preferenceList, w, currentMen, m1) == false) {
-                        currentWomenProposal[w - preferenceList[0].length] = currentMen;
+                    int currentMariage = proposerArray[w - preferenceList[0].length];
+                    if (wPrefersM1OverM(preferenceList, w, currentMen, currentMariage) == false) {
+                        proposerArray[w - preferenceList[0].length] = currentMen;
                         freeMen[currentMen] = true;
-                        freeMen[m1] = false;
+                        freeMen[currentMariage] = false;
                     }
                 }
             }
         }
 
-        System.out.println("Woman   Man");
+        System.out.println("man   Woman");
         for (int i = 0; i < preferenceList[0].length; i++) {
             System.out.print(" ");
-            System.out.println(i + preferenceList[0].length + "	 " + currentWomenProposal[i]);
+            System.out.printf("man %d proposes to woman %d\n",proposerArray[i] ,i+preferenceList[0].length);
         }
     }
 
