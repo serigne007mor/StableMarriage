@@ -5,18 +5,18 @@ import java.util.Arrays;
 public class StableMarriage {
 
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello Java");
-        int preferenceList[][] = new int[][] { {4,3,5}, {5,4,3}, {3,5,4}, {1,0,2},{2,1,0},{0,2,1}};
+        int preferenceList[][] = new int[][] { { 4, 3, 5 }, { 5, 4, 3 }, { 3, 5, 4 }, { 1, 0, 2 }, { 2, 1, 0 },
+                { 0, 2, 1 } };
         stableMarriage(preferenceList);
     }
 
     static boolean wPrefersM1OverM(int preferenceList[][], int currentWomen, int currentMen, int currentAssignment) {
         for (int i = 0; i < preferenceList[0].length; i++) {
-            if (preferenceList[currentWomen][i] == currentAssignment){
+            if (preferenceList[currentWomen][i] == currentAssignment) {
                 return true;
             }
 
-            if (preferenceList[currentWomen][i] == currentMen){
+            if (preferenceList[currentWomen][i] == currentMen) {
                 return false;
             }
 
@@ -36,7 +36,7 @@ public class StableMarriage {
 
             int currentMen;
             for (currentMen = 0; currentMen < preferenceList[0].length; currentMen++)
-                if (freeMen[currentMen] == false){
+                if (freeMen[currentMen] == false) {
                     break;
                 }
 
@@ -60,7 +60,7 @@ public class StableMarriage {
         System.out.println("man   Woman");
         for (int i = 0; i < preferenceList[0].length; i++) {
             System.out.print(" ");
-            System.out.printf("man %d proposes to woman %d\n",proposerArray[i] ,i+preferenceList[0].length);
+            System.out.printf("man %d proposes to woman %d\n", proposerArray[i] + 1, i + preferenceList[0].length);
         }
     }
 

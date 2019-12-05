@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - simulation",
+            "request": "launch",
+            "mainClass": "StableMarriage.simulation",
+            "projectName": "StableMarriage"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - StableMarriage",
             "request": "launch",
             "mainClass": "StableMarriage.StableMarriage",
